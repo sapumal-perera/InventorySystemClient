@@ -167,20 +167,8 @@ public class InventorySystemClient {
         System.out.println( "-----------------------------------------------------------------------------" );
     }
 
-    private int getOrderId() throws IOException {
-        byte[] bytes;
-        try {
-            bytes = Files.readAllBytes( Paths.get( incrementOrderIdFileName ) );
-        }
-        catch ( NoSuchFileException e ) {
-            updateOrderIds( 1 );
-            return 1;
-        }
-        String value = new String( bytes );
-        int orderId = Integer.parseInt( value.trim() ) + 1;
-        updateOrderIds( orderId );
-        return orderId;
-    }
+//    private int CreateRequestId() throws IOException {
+//    }
 
     private void updateOrderIds(int id) throws IOException {
         RandomAccessFile fileStream = new RandomAccessFile( incrementOrderIdFileName, "rw" );
